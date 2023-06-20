@@ -4,6 +4,7 @@
 # ignore vs code project config files
 .vs
 
+yarn.lock
 # ignore logs
 logs
 *.log
