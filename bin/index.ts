@@ -1,16 +1,45 @@
 #! /usr/bin/env ts-node
 import inquirer from 'inquirer';
-import nsconf from 'nconf'
+import { program } from "commander"
+import nconf from 'nconf'
+import fs from 'fs'
+import path from 'path';
 
 interface AnswareType {
     name: string;
     projectType: string
 }
 
-(async () => {
+// program.command("module").description("Create module").argument('<string>', "module name").action((str) => {
+//     console.log(str)
+// })
+const parentDir = path.join(__dirname, '..');
+nconf.file('config', parentDir + '/configration/package-template.json');
+
+nconf.load((err) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log('Configuration loaded successfully.');
+});
+
+const targetDirectory = process.cwd();
+program.command('init').description("Create a new Project").action(async () => {
+
     try {
         const answers: AnswareType = await getAnswers();
         console.log('The answers are: ', answers);
+        fs.mkdir(answers.name, (err) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            console.log('Directory created successfully!');
+        });
+        nconf.set("name", answers.name)
+        fs.writeFile(answers.name + "/package.json", JSON.stringify(nconf.get()), (err) => { console.log(err) })
+
 
     } catch (err: any) {
         console.error(
@@ -18,7 +47,10 @@ interface AnswareType {
             err
         );
     }
-})();
+
+})
+program.parse()
+
 
 function getAnswers() {
     return inquirer.prompt([
