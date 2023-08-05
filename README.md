@@ -1,6 +1,5 @@
 # Shzam CLI
 
-
 This is an open-source GitHub repository that provides a starter template for building Node.js and Express applications using TypeScript. The project comes with a clean folder structure, ESLint, Prettier, and Jest, making it easy for developers to write clean and maintainable code while promoting best practices for new projects.
 
 ## Getting Started
