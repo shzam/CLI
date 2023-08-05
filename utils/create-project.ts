@@ -7,7 +7,8 @@ import type { Options } from './types';
 import { copyTemplateFiles } from './copy-template-files';
 
 const templateDirectory: { [key: string]: string } = {
-    empty: "empty-project"
+    empty: "empty-project",
+    nemt: "Expressjs-monogodb"
 }
 export async function createProject(options: Options) {
     const targetDirectory = process.cwd() + "/" + options.dirName;

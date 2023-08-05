@@ -4,6 +4,7 @@ import { program } from "commander"
 import nconf from 'nconf'
 import fs from 'fs'
 import path from 'path';
+import { createProject } from '../utils/create-project'
 
 interface AnswareType {
     name: string;
@@ -14,33 +15,45 @@ interface AnswareType {
 //     console.log(str)
 // })
 const parentDir = path.join(__dirname, '..');
-nconf.file('config', parentDir + '/configration/package-template.json');
 
-nconf.load((err) => {
-    if (err) {
-        console.error(err);
-        return;
-    }
-    console.log('Configuration loaded successfully.');
-});
-
-const targetDirectory = process.cwd();
 program.command('init').description("Create a new Project").action(async () => {
 
     try {
-        const answers: AnswareType = await getAnswers();
-        console.log('The answers are: ', answers);
-        fs.mkdir(answers.name, (err) => {
+        const answares: AnswareType = await getAnswers();
+        console.log('The answers are: ', answares);
+        fs.mkdir(answares.name, (err) => {
             if (err) {
                 console.error(err);
                 return;
             }
-            console.log('Directory created successfully!');
         });
-        nconf.set("name", answers.name)
-        fs.writeFile(answers.name + "/package.json", JSON.stringify(nconf.get()), (err) => { console.log(err) })
+        if (answares.projectType == "empty") {
+            nconf.file('config', parentDir + '/configration/empty-project/package-template.json');
 
-
+            nconf.load((err) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                console.log('Configuration loaded successfully.');
+            });
+            nconf.set("name", answares.name)
+            fs.writeFile(answares.name + "/package.json", JSON.stringify(nconf.get(), null, 2), (err) => { console.log(err) })
+            createProject({ template: "empty", git: false, install: false, dirName: answares.name })
+        }
+        else if (answares.projectType == "nemt") {
+            nconf.file('config', parentDir + '/configration/Expressjs-monogodb/package-template.json');
+            nconf.load((err) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                console.log('Configuration loaded successfully.');
+            });
+            nconf.set("name", answares.name)
+            fs.writeFile(answares.name + "/package.json", JSON.stringify(nconf.get(), null, 2), (err) => { console.log(err) })
+            createProject({ template: "nemt", git: false, install: false, dirName: answares.name })
+        }
     } catch (err: any) {
         console.error(
             `There was an error while talking to the API: ${err.message}`,
@@ -76,7 +89,7 @@ function getAnswers() {
             name: 'projectType',
             message: 'Which template do you want to use?',
             type: 'list',
-            choices: ['Empty Project (Nodejs/Typescript)', 'With BolierPlate (Nodejs/Exprejss/Mongodb/Typescript)'],
+            choices: [{ name: 'Empty Project (Nodejs/Typescript)', value: "empty" }, { name: 'With BolierPlate (Nodejs/Exprejss/Mongodb/Typescript)', value: 'nemt' }],
             validate: (options: any) => {
                 if (!options.length) {
                     return 'Choose one of template';
