@@ -6,19 +6,21 @@ import { fileURLToPath } from 'url';
 import type { Options } from './types';
 import { copyTemplateFiles } from './copy-template-files';
 
+const templateDirectory: { [key: string]: string } = {
+    empty: "empty-project"
+}
 export async function createProject(options: Options) {
-    const targetDirectory = process.cwd();
-    const currentFileUrl = import.meta.url;
-    const templateDirectory = path.resolve(
-        decodeURI(fileURLToPath(currentFileUrl)),
-        '../../templates',
-        options.template.toLowerCase()
+    const targetDirectory = process.cwd() + "/" + options.dirName;
+    const template = path.resolve(
+        __dirname,
+        '../templates',
+        templateDirectory[options.template.toLowerCase()]
     );
-
+    console.log(templateDirectory)
     const tasks = new Listr([
         {
             title: 'Copy project files',
-            task: () => copyTemplateFiles(templateDirectory, targetDirectory)
+            task: () => copyTemplateFiles(template, targetDirectory)
         },
         {
             title: 'Install dependencies',
@@ -35,6 +37,9 @@ export async function createProject(options: Options) {
         await tasks.run();
 
         console.log('%s Project ready', chalk.green.bold('DONE'));
+        console.log("\n\tSteps To run")
+        console.log(`\t\t1. cd ${options.dirName}`)
+        console.log(`\t\t2. npm/yarn i\n`)
     } catch (error) {
         console.log('%s Error occurred', chalk.red.bold('ERROR'));
     }
