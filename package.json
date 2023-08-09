@@ -1,6 +1,6 @@
 {
   "name": "shzam",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Nodejs-expressjs starter kit with boilerplate code CLI",
   "main": "./bin/index.ts",
   "author": "Yared Tsegaye",
@@ -19,7 +19,6 @@
   },
   "license": "ISC",
   "devDependencies": {
-   
     "eslint-nibble": "^8.1.0",
     "eslint-plugin-import": "^2.26.0",
     "husky": "^8.0.0",

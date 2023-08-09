@@ -1,24 +1,21 @@
 # Shzam CLI
 
-This is an open-source GitHub repository that provides a starter template for building Node.js and Express applications using TypeScript. The project comes with a clean folder structure, ESLint, Prettier, and Jest, making it easy for developers to write clean and maintainable code while promoting best practices for new projects.
+This is an open-source Project that provides a starter template for building Node.js with TypeScript. The project comes with a clean folder structure, ESLint, Prettier, and Jest, making it easy for developers to write clean and maintainable code while promoting best practices for new projects.
 
 ## Getting Started
 To get started with this project, follow the steps below:
 
 1. install the package ```npm -i -g shzam```
-2. To get start run ``` shzam init```
-
+2. To create project run ``` shzam init```
 
 ## Features
 This project starter comes with the following features:
 
 - TypeScript: This project uses TypeScript, making it easy to write and maintain code.
-- Express: This project uses Express, a popular Node.js web framework.
-Clean Folder Structure: The project follows a clean folder structure that makes it easy to navigate and maintain.
+- Express: This project uses Express, a popular Node.js web framework. Clean Folder Structure: The project follows a clean folder structure that makes it easy to navigate and maintain.
 - ESLint: The project comes with ESLint, which helps identify and fix common code issues and maintain a consistent coding style.
 - Prettier: The project comes with Prettier, which ensures code formatting is consistent across the project.
-- Jest: The project comes with Jest, a popular testing framework for JavaScript.
-Contributing
+- Jest: The project comes with Jest, a popular testing framework for JavaScript. Contributing
 If you would like to contribute to this project, please see the contributing guidelines.
 
 ## License
