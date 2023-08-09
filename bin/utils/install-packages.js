@@ -1,6 +1,6 @@
 import { projectInstall } from 'pkg-install';
 
-export function installPackages(targetDir: string) {
+export function installPackages(targetDir) {
     return projectInstall({
         cwd: targetDir
     });

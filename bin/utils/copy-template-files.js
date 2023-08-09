@@ -4,8 +4,8 @@ import { promisify } from 'util';
 const copy = promisify(ncp);
 
 export async function copyTemplateFiles(
-    templateDir: string,
-    targetDir: string
+    templateDir,
+    targetDir
 ) {
     return copy(templateDir, targetDir, { clobber: false });
 }

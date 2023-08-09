@@ -1,4 +1,3 @@
-import { pathsToModuleNameMapper } from 'ts-jest';
 
 const config = {
     preset: 'ts-jest',

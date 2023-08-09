@@ -1,26 +1,23 @@
-#! /usr/bin/env ts-node
+#! /usr/bin/env node
 import inquirer from 'inquirer';
 import { program } from "commander"
 import nconf from 'nconf'
 import fs from 'fs'
 import path from 'path';
-import { createProject } from '../utils/create-project'
+import createProject from './utils/create-project.js'
 
-interface AnswareType {
-    name: string;
-    projectType: string
-}
 
 // program.command("module").description("Create module").argument('<string>', "module name").action((str) => {
 //     console.log(str)
 // })
-const parentDir = path.join(__dirname, '..');
+
+const parentDir = path.join(import.meta.url, '..');
 
 program.command('init').description("Create a new Project").action(async () => {
 
     try {
-        const answares: AnswareType = await getAnswers();
-        console.log('The answers are: ', answares);
+        const answares = await getAnswers();
+       
         fs.mkdir(answares.name, (err) => {
             if (err) {
                 console.error(err);
@@ -54,7 +51,7 @@ program.command('init').description("Create a new Project").action(async () => {
             fs.writeFile(answares.name + "/package.json", JSON.stringify(nconf.get(), null, 2), (err) => { console.log(err) })
             createProject({ template: "nemt", git: false, install: false, dirName: answares.name })
         }
-    } catch (err: any) {
+    } catch (err) {
         console.error(
             `There was an error while talking to the API: ${err.message}`,
             err
@@ -90,7 +87,7 @@ function getAnswers() {
             message: 'Which template do you want to use?',
             type: 'list',
             choices: [{ name: 'Empty Project (Nodejs/Typescript)', value: "empty" }, { name: 'With BolierPlate (Nodejs/Exprejss/Mongodb/Typescript)', value: 'nemt' }],
-            validate: (options: any) => {
+            validate: (options) => {
                 if (!options.length) {
                     return 'Choose one of template';
                 }
