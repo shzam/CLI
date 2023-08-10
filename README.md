@@ -27,7 +27,45 @@ currently it only have 2 templates.
 
 ## Design Pattern
 
-we are promting using the ```Repository pattern```. the Nodejs/Expressjs comes with example project you can look how to use the boilerplate, we aim to mimize the code need to be writen by the programers. i have come up with this folder structure based on my experince in diffrent framework i worked used. 
+We are promoting the use of the 'Repository pattern'. The Node.js/Express.js example project demonstrates the use of the boilerplate, and our aim is to minimize the amount of code that programmers need to write. I have come up with this folder structure based on my experience with different frameworks that I have used.
+
+### Folder structure 
+
+```├── README.md
+├── jest.config.ts
+├── nodemon.json
+├── src
+│   ├── app.ts
+│   ├── apps    // This were the modules goes
+│   │   ├── Demo
+│   │   │   ├── demo.controller.ts
+│   │   │   ├── demo.router.ts
+│   │   │   ├── demo.schema.ts
+│   │   │   ├── index.ts
+│   │   │   └── model
+│   │   │       ├── index.ts
+│   │   │       ├── model.ts
+│   │   │       └── repository.ts
+│   │   └── index.ts
+│   ├── config.ts
+│   ├── core
+│   │   ├── ApiError.ts
+│   │   ├── ApiResponse.ts
+│   │   └── Logger.ts
+│   ├── database.ts
+│   ├── helpers
+│   │   ├── asyncHandler.ts
+│   │   ├── utils.ts
+│   │   ├── validator.ts
+│   │   └── withErrorHandling.ts
+│   ├── server.ts
+│   └── tests
+│       ├── apps
+│       │   └── demo.test.ts
+│       └── setup.ts
+└── tsconfig.json
+
+```
 
 ## Features
 This project starter comes with the following features:

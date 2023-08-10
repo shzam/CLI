@@ -6,17 +6,18 @@ import fs from 'fs'
 import path from 'path';
 import createProject from './utils/create-project.js'
 
+import { fileURLToPath } from 'url';
 
 // program.command("module").description("Create module").argument('<string>', "module name").action((str) => {
 //     console.log(str)
 // })
 
-const parentDir = path.join(import.meta.url, '..');
+const parentDir = path.join( decodeURI(fileURLToPath(import.meta.url)), '../../configration');
 
 program.command('init').description("Create a new Project").action(async () => {
 
     try {
-        const answares = await getAnswers();
+        const answares = await getUserChoices();
        
         fs.mkdir(answares.name, (err) => {
             if (err) {
@@ -25,8 +26,7 @@ program.command('init').description("Create a new Project").action(async () => {
             }
         });
         if (answares.projectType == "empty") {
-            nconf.file('config', parentDir + '/configration/empty-project/package-template.json');
-
+            nconf.file('config', parentDir + '/empty-project/package-template.json');
             nconf.load((err) => {
                 if (err) {
                     console.error(err);
@@ -35,7 +35,7 @@ program.command('init').description("Create a new Project").action(async () => {
                 console.log('Configuration loaded successfully.');
             });
             nconf.set("name", answares.name)
-            fs.writeFile(answares.name + "/package.json", JSON.stringify(nconf.get(), null, 2), (err) => { console.log(err) })
+            fs.writeFile(answares.name + "/package.json", JSON.stringify(nconf.get(),null,2), (err) => { console.log(err) })
             createProject({ template: "empty", git: false, install: false, dirName: answares.name })
         }
         else if (answares.projectType == "nemt") {
@@ -57,12 +57,10 @@ program.command('init').description("Create a new Project").action(async () => {
             err
         );
     }
-
 })
 program.parse()
 
-
-function getAnswers() {
+function getUserChoices() {
     return inquirer.prompt([
         {
             name: 'name',
