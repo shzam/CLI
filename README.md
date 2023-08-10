@@ -5,8 +5,29 @@ This is an open-source Project that provides a starter template for building Nod
 ## Getting Started
 To get started with this project, follow the steps below:
 
-1. install the package ```npm -i -g shzam```
+1. install the package ```npm i -g shzam```
 2. To create project run ``` shzam init```
+
+## Currently supported
+
+currently it only have 2 templates.
+
+1. Empty Template :- This template does not include any framework; it only has basic Node.js and TypeScript configurations.
+
+2. Nodejs/Expressjs :- This template comes with the basic configuration of Express.js and Node.js with TypeScript, along with some boilerplate code that can speed up the development process. Additionally, it also contains a test example.
+
+## Planned For the Future
+
+1. Graphql Support
+
+2. prisma Support
+
+4. module code genarotr with CRUD and test boilerplate
+
+
+## Design Pattern
+
+we are promting using the ```Repository pattern```. the Nodejs/Expressjs comes with example project you can look how to use the boilerplate, we aim to mimize the code need to be writen by the programers. i have come up with this folder structure based on my experince in diffrent framework i worked used. 
 
 ## Features
 This project starter comes with the following features:
