@@ -39,7 +39,7 @@ program.command('init').description("Create a new Project").action(async () => {
             createProject({ template: "empty", git: false, install: false, dirName: answares.name })
         }
         else if (answares.projectType == "nemt") {
-            nconf.file('config', parentDir + '/configration/Expressjs-monogodb/package-template.json');
+            nconf.file('config', parentDir + '/expressjs-mongodb/package-template.json');
             nconf.load((err) => {
                 if (err) {
                     console.error(err);
