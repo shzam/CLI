@@ -1,6 +1,6 @@
 # Shzam 
 
-<img src="./assets//giphy.gif"
+<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3hsYzR3NGs3Njh2NmY3M2ZicXN3MW9oYXppcGNpYnV0OXV6Z3AwNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FAXgrcmx38hhzL3N2Y/giphy.gif"
      alt="Markdown Monster icon"
      style="marggin-right:auto,margin-left:auto" />
 

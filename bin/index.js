@@ -5,13 +5,9 @@ import nconf from 'nconf'
 import fs from 'fs'
 import path from 'path';
 import createProject from './utils/create-project.js'
-import chalk from "chalk"
 import { fileURLToPath } from 'url';
 import figlet from 'figlet'
 
-// program.command("module").description("Create module").argument('<string>', "module name").action((str) => {
-//     console.log(str)
-// })
 
 const parentDir = path.join( decodeURI(fileURLToPath(import.meta.url)), '../../configration');
 
@@ -68,7 +64,7 @@ program.command("version").description("Get current version").action(()=>{
 program.parse()
 
 function getUserChoices() {
-    console.log(figlet.textSync('S h z a m'))
+    console.log(figlet.textSync('S h z a m ⚡'))
     console.log("\n")
     return inquirer.prompt([
         {
