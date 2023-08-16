@@ -5,8 +5,9 @@ import nconf from 'nconf'
 import fs from 'fs'
 import path from 'path';
 import createProject from './utils/create-project.js'
-
+import chalk from "chalk"
 import { fileURLToPath } from 'url';
+import figlet from 'figlet'
 
 // program.command("module").description("Create module").argument('<string>', "module name").action((str) => {
 //     console.log(str)
@@ -14,7 +15,7 @@ import { fileURLToPath } from 'url';
 
 const parentDir = path.join( decodeURI(fileURLToPath(import.meta.url)), '../../configration');
 
-program.command('init').description("Create a new Project").action(async () => {
+program.command('init').description("Create a new Project").addHelpText("after","This is simple commande to start a new project. ").action(async () => {
 
     try {
         const answares = await getUserChoices();
@@ -58,9 +59,17 @@ program.command('init').description("Create a new Project").action(async () => {
         );
     }
 })
+
+program.command("version").description("Get current version").action(()=>{
+    const parentDir = path.join( decodeURI(fileURLToPath(import.meta.url)), '../../');
+    nconf.file('config', parentDir + 'package.json');
+    console.log(nconf.get("version"))
+})
 program.parse()
 
 function getUserChoices() {
+    console.log(figlet.textSync('S h z a m'))
+    console.log("\n")
     return inquirer.prompt([
         {
             name: 'name',
@@ -70,8 +79,8 @@ function getUserChoices() {
                 if (!projectname.length) {
                     return 'Please provide a project name';
                 }
-                if (projectname.length <= 3 || projectname.length > 20) {
-                    return 'Please provide a project name between 4 and 20 characters long';
+                if (projectname.length <= 1 || projectname.length > 20) {
+                    return 'Please provide a project name between 1 and 20 characters long';
                 }
 
                 return true;

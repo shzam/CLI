@@ -1,4 +1,8 @@
-# Shzam CLI
+# Shzam 
+
+<img src="./assets//giphy.gif"
+     alt="Markdown Monster icon"
+     style="marggin-right:auto,margin-left:auto" />
 
 This is an open-source Project that provides a starter template for building Node.js with TypeScript. The project comes with a clean folder structure, ESLint, Prettier, and Jest, making it easy for developers to write clean and maintainable code while promoting best practices for new projects.
 
