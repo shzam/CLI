@@ -12,6 +12,10 @@ To get started with this project, follow the steps below:
 1. install the package ```npm i -g shzam```
 2. To create project run ``` shzam init```
 
+### Note
+
+If you are using the Node.js/Express.js/MongoDB template, make sure to set up MongoDB and ensure that you provide the correct `url`, `username`, and `password`.
+
 ## Currently supported
 
 currently it only have 2 templates.
