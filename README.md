@@ -24,13 +24,14 @@ currently it only have 2 templates.
 
 2. Nodejs/Expressjs :- This template comes with the basic configuration of Express.js and Node.js with TypeScript, along with some boilerplate code that can speed up the development process. Additionally, it also contains a test example.
 
+3. Module Generater :- You can easly create Modules with basic crud boiler plate by running `shzam addApp`.
+
 ## Planned For the Future
 
 1. Graphql Support
 
 2. prisma Support
 
-4. module code genarotr with CRUD and test boilerplate
 
 
 ## Design Pattern
