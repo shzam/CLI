@@ -1,0 +1,59 @@
+import express from 'express';
+import validator, { ValidationSource } from '@helpers/validator';
+
+import { Create{{moudleName}}, Delete{{moudleName}}, Get{{moudleName}}, Update{{moudleName}} } from './demo.controller';
+import schema from './demo.schema';
+
+const router = express.Router();
+
+/*
+ * @method GET
+ * @description returns all Demos
+ * @param none
+ * @body none
+ * @return [{{moudleName}}s]
+ * @example GET /{{moduleNameLowercase}}s
+ */
+router.get('/', Get{{moudleName}});
+
+/*
+ * @method POST
+ * @description create {{moudleName}}
+ * @param none
+ * @body {name:string}
+ * @return {{moudleName}}
+ * @example POST /{{moduleNameLowercase}}s {name: ${name}}
+ */
+
+router.post('/', validator(schema.{{moduleNameLowercase}}Schema), Create{{moudleName}});
+
+/*
+ * @method PUT
+ * @description Updates {{moudleName}}
+ * @param id of the {{moduleNameLowercase}} to update
+ * @body {name:string}
+ * @return {{moudleName}}
+ * @example PUT /{{moduleNameLowercase}}s/${id} {name: ${name}}
+ */
+router.put(
+    '/:id',
+    validator(schema.{{moduleNameLowercase}}Id, ValidationSource.PARAM),
+    validator(schema.{{moduleNameLowercase}}Schema, ValidationSource.BODY),
+    Update{{moudleName}}
+);
+
+/*
+ * @method DELETE
+ * @description Delete {{moudleName}}
+ * @param id of the {{moduleNameLowercase}} to delete
+ * @body none
+ * @return none
+ * @example DELETE /{{moduleNameLowercase}}s/${id}
+ */
+router.delete(
+    '/:id',
+    validator(schema.{{moduleNameLowercase}}Id, ValidationSource.PARAM),
+    Delete{{moudleName}}
+);
+
+export default router;

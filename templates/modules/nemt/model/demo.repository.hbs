@@ -1,0 +1,45 @@
+import { Types } from 'mongoose';
+import { NoDataError, BadRequestError } from '@core/ApiError';
+
+import { {{moudleName}}, {{moudleName}}Model } from './model';
+import withErrorHandling from '@helpers/withErrorHandling';
+
+const create{{moudleName}} = async ({ name }: Pick<{{moudleName}}, 'name'>): Promise<{{moudleName}}> => {
+    return  withErrorHandling( async ()=>{
+        const {{moduleNameLowercase}} = await {{moudleName}}Model.create({ name });
+        return {{moduleNameLowercase}};
+    })
+};
+
+const update{{moudleName}} = async ( {{moduleNameLowercase}}: Pick< {{moudleName}} , '_id' | 'name' > ): Promise< {{moudleName}} > => {
+    return  withErrorHandling( async ()=>{
+        const new{{moudleName}} = await {{moudleName}}Model.findByIdAndUpdate(
+            {{moduleNameLowercase}}._id,
+            {
+                name: {{moduleNameLowercase}}.name
+            },
+            { new: true }
+        )
+            .lean()
+            .exec();
+
+        if (!new{{moudleName}}) {
+            throw new NoDataError(`No {{moudleName}} with id ${ {{ moduleNameLowercase }}._id} found`);
+        }
+        return new{{moudleName}};
+    })
+};
+
+const delete{{moudleName}}= async (id: Types.ObjectId) => {
+    const result = await {{moudleName}}Model.deleteOne({ _id: id });
+    if (result.deletedCount === 0) {
+        throw new NoDataError(`No {{moduleNameLowercase}} with id ${id} found`);
+    }
+};
+
+const getAll{{moudleName}} = async () => {
+    const {{moduleNameLowercase}} = await {{moudleName}}Model.find();
+    return {{moduleNameLowercase}};
+};
+
+export { create{{moudleName}}, update{{moudleName}}, delete{{moudleName}}, getAll{{moudleName}} };

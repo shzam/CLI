@@ -1,0 +1,50 @@
+import { Request, Response } from 'express';
+import { Types } from 'mongoose';
+import asyncHandler from '@helpers/asyncHandler';
+import { SuccessResponse } from '@core/ApiResponse';
+
+import { update{{moudleName}}, create{{moudleName}}, delete{{moudleName}}, getAll{{moudleName}} } from './model';
+
+interface {{moudleName}}Request extends Request {
+    body: {
+        name: string;
+    };
+    params: {
+        id?: string;
+    };
+}
+
+export const Get{{moudleName}} = asyncHandler(async (req: {{moudleName}}Request, res: Response) => {
+    const {{moduleNameLowercase}}s = await getAll{{moudleName}}();
+    new SuccessResponse('{{moudleName}} Api', {{moduleNameLowercase}}s).send(res);
+});
+
+export const Create{{moudleName}} = asyncHandler(
+    async (req: {{moudleName}}Request, res: Response) => {
+        const { name } = req.body;
+        const {{moduleNameLowercase}}s = await create{{moudleName}}({ name });
+        new SuccessResponse('{{moudleName}} Api', {{moduleNameLowercase}}s).send(res);
+    }
+);
+
+export const Update{{moudleName}} = asyncHandler(
+    async (req: {{moudleName}}Request, res: Response) => {
+        const { id } = req.params;
+        const { name } = req.body;
+
+        const {{moduleNameLowercase}} = await update{{moudleName}}({
+            _id: id! as unknown as Types.ObjectId,
+            name: name
+        });
+
+        new SuccessResponse('{{moudleName}} updated', {{moduleNameLowercase}}).send(res);
+    }
+);
+
+export const Delete{{moudleName}} = asyncHandler(
+    async (req: {{moudleName}}Request, res: Response) => {
+        const { id } = req.params;
+        await delete{{moudleName}}(id! as unknown as Types.ObjectId);
+        new SuccessResponse('{{moudleName}} removed', {}).send(res);
+    }
+);
