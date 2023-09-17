@@ -1,6 +1,6 @@
 {
   "name": "shzam",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Nodejs-expressjs starter kit with boilerplate code CLI",
   "main": "./bin/index.ts",
   "author": "Yared Tsegaye",

@@ -9,9 +9,9 @@ This is an open-source Project that provides a starter template for building Nod
 ## Getting Started
 To get started with this project, follow the steps below:
 
-1. install the package ```npm i -g shzam```
+1. install the package `npm i -g shzam`
 2. To create project run ``` shzam init```
-
+3. To create Modules for Nodejs/Expresjs template run ```shzam addApp```
 ### Note
 
 If you are using the Node.js/Express.js/MongoDB template, make sure to set up MongoDB and ensure that you provide the correct `url`, `username`, and `password`.
@@ -32,6 +32,7 @@ currently it only have 2 templates.
 
 2. prisma Support
 
+3. Reactjs/Typescript boilerplate template
 
 
 ## Design Pattern
