@@ -7,11 +7,13 @@
 This is an open-source Project that provides a starter template for building Node.js with TypeScript. The project comes with a clean folder structure, ESLint, Prettier, and Jest, making it easy for developers to write clean and maintainable code while promoting best practices for new projects.
 
 ## Getting Started
+
 To get started with this project, follow the steps below:
 
 1. install the package `npm i -g shzam`
 2. To create project run ``` shzam init```
-3. To create Modules for Nodejs/Expresjs template run ```shzam addApp```
+3. "If you are using the Nodejs/Expressjs template and would like to create a module with basic CRUD boilerplate, simply use the command `shzam addApp`.
+
 ### Note
 
 If you are using the Node.js/Express.js/MongoDB template, make sure to set up MongoDB and ensure that you provide the correct `url`, `username`, and `password`.
